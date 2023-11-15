@@ -7,10 +7,6 @@ app = Flask(__name__)
 def home():
     return render_template('/python_googleSheet/view/home.html')
 
-app.route('/about')
-def about():
-    return 'About Page'
-
 #Ejecutar Aplicacion
 if __name__ == '__main__':    
     app.run(debug=True)
