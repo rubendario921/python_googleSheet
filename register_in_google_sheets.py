@@ -1,5 +1,4 @@
-# Importación de Librerias
-
+# Importación de Librerías
 # Credenciales de Google
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -9,7 +8,7 @@ import time
 
 
 # Registro en Google Sheets
-# Ingresar al link https://console.cloud.google.com/ y realizar la configuracion en las APIs de Google Sheets.
+# Ingresar al link https://console.cloud.google.com/ y realizar la configuración en las APIs de Google Sheets.
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 # Descargar el archivo JSON de la Api de Google colocar en el mismo directorio donde funcionara el programa
 KEY = "python-registro-masivo-shet.json"
@@ -44,7 +43,15 @@ for i in range(len(nombre_completo)):
     values = list(map(list, zip(*values)))
     range_ = "A{0}:L{0}".format(i + 1)
     result = (
-        sheet.values().append(spreadsheetId=SPREADSHEET_ID,range=range_,valueInputOption="USER_ENTERED",body={"values": values}).execute())
+        sheet.values()
+        .append(
+            spreadsheetId=SPREADSHEET_ID,
+            range=range_,
+            valueInputOption="USER_ENTERED",
+            body={"values": values},
+        )
+        .execute()
+    )
     sent_count += 1
 
     # Confirmacion de registro ingresado
